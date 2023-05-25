@@ -1,3 +1,5 @@
+#Motor control highly inspired by Ben at https://ben.akrin.com/driving-a-28byj-48-stepper-motor-uln2003-driver-with-a-raspberry-pi/
+
 import RPi.GPIO as GPIO
 import time
 
@@ -23,7 +25,6 @@ in6 = 20
 in7 = 16
 in8 = 12
 
-# careful lowering this, at some point you run into the mechanical limitation of how quick your motor can move
 
 
 # defining stepper motor sequence (found in documentation http://www.4tronix.co.uk/arduino/Stepper-Motors.php)
@@ -89,7 +90,7 @@ def run(_steps,_sleep,_direction):
             motor_step_counter_right = (motor_step_counter_right + 1) % 8
             motor_step_counter_left = (motor_step_counter_left + 1) % 8
         else: # defensive programming
-            print( "uh oh... direction should *always* be either True or False" )
+
             cleanup()
             exit( 1 )
         time.sleep( step_sleep )
